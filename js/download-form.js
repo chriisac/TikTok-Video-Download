@@ -3,16 +3,26 @@ const listItems = [];
 
 class ItemDownload
 {
-  constructor(fileName, id)
+  constructor(fileName, newId)
   {
-      list.insertAdjacentHTML("beforeend",`<tr id='${id}'>
-                                              <td>${fileName}</td>
-                                              <td>0%</td>
+    this.id = newId;
+    this.fileName = fileName;
+    this.progress = "0";
+    list.insertAdjacentHTML("beforeend",`<tr id='${this.id}'>
+                                              <td>${this.fileName}</td>
+                                              <td>${this.progress}%</td>
                                               <td>Downloading</td>
                                             </tr>`);
   }
-}
 
+  updateDownloadProgress(percentage)
+  {
+    this.progress = percentage;
+    list.querySelectorAll("tr")[this.id].querySelectorAll("td")[1].innerHTML = this.progress + "%";
+    return true;
+  }
+
+}
 
 function addNewDownload()
 {
