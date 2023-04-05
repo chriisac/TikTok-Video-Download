@@ -1,9 +1,23 @@
-let NListItems = 0;
+let list = document.getElementById("downloadList");
+const listItems = [];
+
+class ItemDownload
+{
+  constructor(fileName, id)
+  {
+      list.insertAdjacentHTML("beforeend",`<tr id='${id}'>
+                                              <td>${fileName}</td>
+                                              <td>0%</td>
+                                              <td>Downloading</td>
+                                            </tr>`);
+  }
+}
+
 
 function addNewDownload()
 {
+  let newId = list.getElementsByTagName("tr").length;
   let url = document.getElementById("url");
-  let list = document.getElementById("downloadList");
   let fileName = url.value.substr(url.value.lastIndexOf("/")+1) + ".mp4";
-  list.insertAdjacentHTML("beforeend","<tr id='"+(NListItems++)+"'><td>" + fileName +"</td><td>0%</td><td>Downloading</td></tr>");
+  listItems.push(new ItemDownload(fileName, newId));
 }
