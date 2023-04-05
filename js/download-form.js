@@ -17,9 +17,13 @@ class ItemDownload
 
   updateDownloadProgress(percentage)
   {
-    this.progress = percentage;
-    list.querySelectorAll("tr")[this.id].querySelectorAll("td")[1].innerHTML = this.progress + "%";
-    return true;
+    if(percentage >=0)
+    {
+      this.progress = percentage;
+      list.querySelectorAll("tr")[this.id].querySelectorAll("td")[1].innerHTML = this.progress + "%";//select this class tr in the list table, then select the progress td and updated it with the new progress percentage
+      return true;
+    }
+    return false;
   }
 
 }
