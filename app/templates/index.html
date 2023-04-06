@@ -4,7 +4,7 @@
     <form class="form-floating">
         <div class="input-group mb-3">
           <input type="text" class="form-control" placeholder="URL" id="url">
-          <button class="btn btn-outline-secondary" type="button" id="download-btn" onclick="addNewDownload()">Download</button>
+          <button class="btn btn-outline-secondary" type="button" id="download-btn" onclick="sendURL()">Download</button>
         </div>
 
         <table class="table table-hover table-bordered table-striped table-striped-columns border text-center" id="downloadList">
@@ -17,5 +17,5 @@
           </thead>
         </table>
     </form>
-    <script src="js/download-form.js"></script>
+    <script src="static/js/download-form.js"></script>
 {% endblock %}

@@ -1,4 +1,5 @@
 let list = document.getElementById("downloadList");
+let urlField = document.getElementById("url");
 const listItems = [];
 const listColumns = { "filename":0,
                       "progress":1,
@@ -6,12 +7,12 @@ const listColumns = { "filename":0,
 
 class ItemDownload
 {
-  constructor(fileName, newId)
+  constructor(fileName, newId, progress, status)
   {
     this.id = newId;
     this.fileName = fileName;
-    this.progress = "0";
-    this.status   = "Downloading";
+    this.progress = progress;
+    this.status   = status;
     list.insertAdjacentHTML("beforeend",`<tr id='${this.id}'>
                                               <td>${this.fileName}</td>
                                               <td>${this.progress}%</td>
@@ -51,4 +52,59 @@ function addNewDownload()
   let url = document.getElementById("url");
   let fileName = url.value.substr(url.value.lastIndexOf("/")+1) + ".mp4";
   listItems.push(new ItemDownload(fileName, newId));
+}
+
+async function sendURL()
+{
+  let myPromise = new Promise(function(resolve) {
+    let req = new XMLHttpRequest();
+    req.open('GET', "/add?url=" + urlField.value);
+    req.onload = function() {
+      if(req.status == 200)
+      {
+        resolve(req.response);
+      }
+      else
+      {
+        resolve("{}");
+      }
+    };
+    req.send();
+  });
+  console.log(await myPromise);
+}
+
+async function updateDonwloadList()
+{
+  let myPromise = new Promise(function(resolve) {
+    let req = new XMLHttpRequest();
+    req.open("GET", "/list");
+    req.onload = function() {
+      if (req.status == 200)
+      {
+        resolve(req.response);
+      }
+      else
+      {
+        resolve("Error")
+      }
+    };
+    req.send();
+  });
+  downloadList = JSON.parse(await myPromise);
+  console.log(downloadList);
+
+  for(let id in downloadList){
+      if(id > listItems.length){
+        listItems.push(new ItemDownload(downloadList[id].fileName,
+                                        id,
+                                        downloadList[id].progress,
+                                        downloadList[id].status)
+                                      );
+      }
+      else {
+        listItems[id-1].updateDownloadProgress(downloadList[id].progress);
+      }
+  }
+
 }

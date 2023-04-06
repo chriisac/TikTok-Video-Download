@@ -4,10 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ad49af8-2e83-49a8-99e0-130b037cb94b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/css/master.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/download-form.js" beforeDir="false" />
+    <list default="true" id="2ad49af8-2e83-49a8-99e0-130b037cb94b" name="Changes" comment="organize files">
+      <change afterPath="$PROJECT_DIR$/app/downloadManager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/js/download-form.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/js/download-form.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,14 +21,15 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
+        <entry key="$PROJECT_DIR$" value="master" />
         <entry key="$PROJECT_DIR$/GUI" value="updateItemList" />
       </map>
     </option>
@@ -40,7 +45,7 @@
   "keyToString": {
     "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "dev",
     "ignore.virus.scanning.warn.message": "true",
     "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
   }
@@ -60,6 +65,21 @@
       <option name="presentableId" value="Default" />
       <updated>1680702026662</updated>
     </task>
+    <task id="LOCAL-00001" summary="organize files">
+      <created>1680704793112</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1680704793112</updated>
+    </task>
+    <task id="LOCAL-00002" summary="organize files">
+      <created>1680704803716</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1680704803716</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -73,7 +93,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="master" />
+                        <option value="dev" />
                       </list>
                     </value>
                   </entry>
@@ -89,5 +109,7 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/app/GUI" />
     </ignored-roots>
+    <MESSAGE value="organize files" />
+    <option name="LAST_COMMIT_MESSAGE" value="organize files" />
   </component>
 </project>
