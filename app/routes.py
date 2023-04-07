@@ -1,7 +1,8 @@
 from flask import render_template
 from flask import request
 from app import app
-from app import downloadsList
+from app import downloads_list
+
 
 
 @app.route("/")
@@ -12,15 +13,14 @@ def index():
 
 @app.route("/list")
 def list_downloads():
-    return downloadsList.get()
+    return downloads_list.get()
 
 
 @app.route("/add", methods=["GET"])
 def add_download():
     url = request.args.get("url", "")
     if url != "":
-        filename = url.split("/")[-1]
-        if downloadsList.add(filename):
+        if downloads_list.add(url):
             return "success"
         else:
             return "failed"
@@ -32,6 +32,5 @@ def add_download():
 def update_download():
     id = request.args.get("id", -1)
     if id != -1:
-        downloadsList.list[int(id)].progress += 1
+        downloads_list.list[int(id)].progress += 1
     return "success"
-

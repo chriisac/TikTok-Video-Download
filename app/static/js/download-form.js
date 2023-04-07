@@ -86,13 +86,12 @@ async function updateDonwloadList()
       }
       else
       {
-        resolve("Error")
+        resolve("Error");
       }
     };
     req.send();
   });
   downloadList = JSON.parse(await myPromise);
-  console.log(downloadList);
 
   for(let id in downloadList){
       if(id > listItems.length){
@@ -108,3 +107,5 @@ async function updateDonwloadList()
   }
 
 }
+
+setInterval(updateDonwloadList, 500);

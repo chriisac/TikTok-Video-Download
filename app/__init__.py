@@ -1,9 +1,8 @@
 from flask import Flask
+from app import downloadManager
 
 app = Flask(__name__)
 
-from app import downloadManager
-downloadsList = downloadManager.DownloadList()
+downloads_list = downloadManager.DownloadList()
 
 from app import routes
-
