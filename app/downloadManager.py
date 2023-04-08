@@ -1,5 +1,3 @@
-import json
-import requests
 import asyncio
 import aiohttp
 import aiofiles
@@ -7,9 +5,10 @@ import aiofiles
 CHUNK_SIZE = 1024*1024
 DOWNLOAD_FOLDER = "Downloads/"
 
+
 class Download:
-    def __init__(self, id, file_name, url):
-        self.id = id
+    def __init__(self, download_id, file_name, url):
+        self.id = download_id
         self.fileName = file_name
         self.progress = 0
         self.status = "Initializing"
@@ -37,8 +36,6 @@ class Download:
         except OSError as e:
             self.status = "Error"
             print(f"Error writing to file {self.fileName}: {e}")
-
-
 
     def update_file_name(self, name):
         self.fileName = name
@@ -69,7 +66,6 @@ class DownloadList:
 
 
 async def download_files(download_list):
-    loop = asyncio.get_event_loop()
     while True:
         downloads = download_list.get()
         for download_id in downloads:
@@ -77,4 +73,3 @@ async def download_files(download_list):
                 download_list.list[download_id].status = "Downloading"
                 asyncio.ensure_future(download_list.list[download_id].download())
         await asyncio.sleep(1)
-
