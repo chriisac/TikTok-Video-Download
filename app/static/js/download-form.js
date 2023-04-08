@@ -103,6 +103,7 @@ async function updateDonwloadList()
       }
       else {
         listItems[id-1].updateDownloadProgress(downloadList[id].progress);
+        listItems[id-1].updateDownloadStatus(downloadList[id].status);
       }
   }
 

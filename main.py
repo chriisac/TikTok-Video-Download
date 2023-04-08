@@ -1,15 +1,14 @@
+import asyncio
+
 from app import app
 from app import downloadManager
 from app import downloads_list
 import multiprocessing
 import time
 
-
-@app.after_request
-def test(response):
-    downloadManager.download_files(downloads_list)
-    return response
-
 if __name__ == '__main__':
-    app.run(debug=True, use_reloader=False)
+    loop = asyncio.get_event_loop()
+    loop.create_task(downloadManager.download_files(downloads_list))
+    app.run(debug=True, use_reloader=False, loop=loop)
+    loop.close()
 

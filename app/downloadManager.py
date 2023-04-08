@@ -1,7 +1,10 @@
 import json
 import requests
+import asyncio
+import aiohttp
+import aiofiles
 
-CHUNK_SIZE = 64
+CHUNK_SIZE = 1024*1024
 DOWNLOAD_FOLDER = "Downloads/"
 
 class Download:
@@ -11,6 +14,31 @@ class Download:
         self.progress = 0
         self.status = "Initializing"
         self.url = url
+        self.stream = ""
+
+    async def download(self):
+        try:
+            async with aiohttp.ClientSession() as session:
+                async with session.get(self.url) as response:
+                    async with aiofiles.open(DOWNLOAD_FOLDER+self.fileName, 'wb') as f:
+                        downloaded = 0
+                        async for chunk in response.content.iter_any():
+                            if chunk:
+                                downloaded += chunk.__sizeof__()
+                                progress = float("{:0.2f}".format((downloaded*100)/response.content_length))
+                                if progress > 100.0:
+                                    progress = 100.0
+                                self.progress = progress
+                                await f.write(chunk)
+                        self.status = "Complete"
+        except aiohttp.ClientError as e:
+            self.status = "Error"
+            print(f"Error downloading {self.url}: {e}")
+        except OSError as e:
+            self.status = "Error"
+            print(f"Error writing to file {self.fileName}: {e}")
+
+
 
     def update_file_name(self, name):
         self.fileName = name
@@ -40,14 +68,13 @@ class DownloadList:
         return list_to_json
 
 
-def download_files(download_list):
-    for download in download_list.list:
-        try:
-            with open(DOWNLOAD_FOLDER+"test.bin", "ab") as f:
-                f.write(b"penis\b")
-                print("done")
-        except:
-            print("error")
-
-
+async def download_files(download_list):
+    loop = asyncio.get_event_loop()
+    while True:
+        downloads = download_list.get()
+        for download_id in downloads:
+            if download_list.list[download_id].status == "Initializing":
+                download_list.list[download_id].status = "Downloading"
+                asyncio.ensure_future(download_list.list[download_id].download())
+        await asyncio.sleep(1)
 
