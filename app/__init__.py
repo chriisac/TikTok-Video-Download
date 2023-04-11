@@ -2,6 +2,7 @@ from quart import Quart
 from app import downloadManager
 import asyncio
 
+
 app = Quart(__name__)
 
 downloads_list = downloadManager.DownloadList()

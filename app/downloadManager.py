@@ -1,10 +1,11 @@
 import asyncio
 import aiohttp
 import aiofiles
+from app import tiktok
+
 
 CHUNK_SIZE = 1024*1024
 DOWNLOAD_FOLDER = "Downloads/"
-
 
 class Download:
     def __init__(self, download_id, file_name, url):
@@ -71,5 +72,13 @@ async def download_files(download_list):
         for download_id in downloads:
             if download_list.list[download_id].status == "Initializing":
                 download_list.list[download_id].status = "Downloading"
-                asyncio.ensure_future(download_list.list[download_id].download())
+                if download_list.list[download_id].url.find("tiktok.com"):
+                    asyncio.create_task(
+                        tiktok.save_tiktok(download_list.list[download_id].url,
+                                           download_list.list[download_id]))
+                else:
+                    asyncio.ensure_future(download_list.list[download_id].download())
         await asyncio.sleep(1)
+
+
+
