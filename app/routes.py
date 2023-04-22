@@ -18,7 +18,7 @@ async def list_downloads():
 async def add_download():
     url = request.args.get("url", "")
     if url != "":
-        if downloads_list.add(url):
+        if await downloads_list.add(url):
             return "success"
         else:
             return "failed"
