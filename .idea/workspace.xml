@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ad49af8-2e83-49a8-99e0-130b037cb94b" name="Changes" comment="able to download from tiktok now">
+    <list default="true" id="2ad49af8-2e83-49a8-99e0-130b037cb94b" name="Changes" comment="add files to ignore">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -34,6 +35,9 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2O0ef3FoUzdTyvXETpnnh9pJATF" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -188,7 +192,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681242181159</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="add files to ignore">
+      <created>1682652425319</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1682652425319</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -221,6 +232,7 @@
     <MESSAGE value="organize files" />
     <MESSAGE value="seilaq porra é essa" />
     <MESSAGE value="able to download from tiktok now" />
-    <option name="LAST_COMMIT_MESSAGE" value="able to download from tiktok now" />
+    <MESSAGE value="add files to ignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="add files to ignore" />
   </component>
 </project>
